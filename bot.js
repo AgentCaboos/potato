@@ -63,7 +63,7 @@ client.on("guildMemberAdd", member => {
 
   var embed = new Discord.RichEmbed()
     .setColor(0x13ce26)
-    .setDescription(` ** ${member.user.username} ** Joined!: wave: \nUsercount: ** ${member.guild.members.size}! ** `)
+    .setDescription(` ** ${member.user.username} ** Joined! :wave: \nUsercount: ** ${member.guild.members.size}! ** `)
     .setThumbnail(member.user.avatarURL)
     .setFooter(member.user.username);
 
@@ -79,7 +79,7 @@ client.on("guildMemberRemove", member => {
   var embed = new Discord.RichEmbed()
     .setColor(0xf48428)
     .setThumbnail(member.user.avatarURL)
-    .setDescription(` ** ${member.user.username} ** leaved!:wave: \nUsercount: ** ${member.guild.members.size}! ** `)
+    .setDescription(` ** ${member.user.username} ** left!:wave: \nUsercount: ** ${member.guild.members.size}! ** `)
     .setFooter(member.user.username);
   channel.send({
     embed
