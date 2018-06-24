@@ -58,6 +58,33 @@ client.on('message', message => {
     message.channel.send('These are the commands !version !members !forum !ip !store !ping !8ball')
   }
 });
+client.on("guildMemberAdd", member => {
+  //als je een role wilt toevoegen als iemand joint  member.addRole(member.guild.roles.find("name","Human"));
 
-client.login('NDU1ODA5MzI3NTMwMjQ2MTQ1.DgBZ_Q.V9_55EyoZtdircuNPpV5jSxx4L8')
+  var embed = new Discord.RichEmbed()
+    .setColor(0x13ce26)
+    .setDescription(` ** ${member.user.username} ** Joined!: wave: \nUsercount: ** ${member.guild.members.size}! ** `)
+    .setThumbnail(member.user.avatarURL)
+    .setFooter(member.user.username);
+
+  member.guild.channels.find("id", "460149919244615700").send({
+    embed
+  })
+});
+
+
+client.on("guildMemberRemove", member => {
+  const channel = member.guild.channels.find("id", "460149919244615700")
+
+  var embed = new Discord.RichEmbed()
+    .setColor(0xf48428)
+    .setThumbnail(member.user.avatarURL)
+    .setDescription(` ** ${member.user.username} ** leaved!:wave: \nUsercount: ** ${member.guild.members.size}! ** `)
+    .setFooter(member.user.username);
+  channel.send({
+    embed
+  });
+});
+
+client.login(process.env.TOKEN)
 
